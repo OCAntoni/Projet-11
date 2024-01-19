@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Nav from "../components/nav/nav"
 import Footer from "../components/footer/footer"
@@ -24,7 +25,9 @@ function Signin() {
                             <input type="checkbox" id="remember-me" />
                             <label htmlFor="remember-me">Remember me</label>
                         </div>
+                        <NavLink to="/user">
                         <button className="sign-in-button">Sign In</button>
+                        </NavLink>
                     </form>
                 </section>
             </main>
