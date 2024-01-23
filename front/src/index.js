@@ -1,18 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Home from './pages/home'
-import Signin from './pages/signin'
-import User from './pages/user'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './app';
+import { Provider } from 'react-redux';
+import { Store } from "./store/store";
+import store from 'mongoose/lib/promise_provider';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Router>
-  <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/signin" element={<Signin />} />
-    <Route path="/user" element={<User />} />
-  </Routes>
-</Router>
+  <React.StrictMode>
+    <Provider Store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
 );
