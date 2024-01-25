@@ -7,7 +7,7 @@ import "../styles/main.scss"
 
 function User() {
     return (
-        <div>
+        <div className="body">
             <nav className="main-nav">
                 <NavLink to="/">
                     <img

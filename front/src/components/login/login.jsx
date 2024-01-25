@@ -6,7 +6,6 @@ import { Provider } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import "../login/login.scss"
-import store from "mongoose/lib/promise_provider";
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -16,16 +15,16 @@ function Login() {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        try {
+        try { 
             const response = await fetch ("http://localhost:3001/api/v1/user/login", {
                 method: "POST",
                 headers: {
-                  accept: "application/json",
-                  "content-type": "application/json",
+                  "Content-Type": "application/json",
                 }, 
                 body: JSON.stringify({ email, password }),
             });
-            const token = response.data.body.token;
+            const result = await response.json();
+            const token = result.body.token;
             dispatch(login(token));
             navigate('/user')
         } catch (error) {
@@ -34,19 +33,18 @@ function Login() {
     };
 
     return (
-        <Provider store={store}>
-            <main className="main bg-dark">
+        <main className="main bg-dark">
                     <section className="sign-in-content">
                         <FontAwesomeIcon icon={faUserCircle} />
                         <h1>Sign In</h1>
                         <form onSubmit={handleLogin}>
                             <div className="input-wrapper">
                                 <label htmlFor="username">Username</label>
-                                <input type="text" id="username" />
+                                <input onChange={e => setEmail(e.target.value)} type="text" id="username" />
                             </div>
                             <div className="input-wrapper">
                                 <label htmlFor="password">Password</label>
-                                <input type="password" id="password" />
+                                <input onChange={e => setPassword(e.target.value)}type="password" id="password" />
                             </div>
                             <div className="input-remember">
                                 <input type="checkbox" id="remember-me" />
@@ -55,8 +53,7 @@ function Login() {
                             <button type="submit" className="sign-in-button">Sign In</button>
                         </form>
                     </section>
-            </main>
-        </Provider>
+        </main>
     )
 }
 

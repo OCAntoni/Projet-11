@@ -11,6 +11,9 @@
     box-sizing: border-box;
     text-align: left;
     margin-bottom: 2rem;
+    @media (min-width: 720px) {
+        flex-direction: row;
+      }
   
   .account-amount {
     margin: 0;
@@ -44,19 +47,15 @@
     border-color: #00bc77;
     background-color: #00bc77;
     color: #fff;
+    border: none;
+    @media (min-width: 720px) {
+      width: 200px;
+    }
   }
   
   @media (min-width: 720px) {
-    .account {
-      flex-direction: row;
-    }
-  
     .account-content-wrapper.cta {
       flex: 0;
-    }
-  
-    .transaction-button {
-      width: 200px;
     }
   }
 }
