@@ -4,24 +4,27 @@ import "../userNameEdit/userNameEdit.scss"
 
 function UserNameEdit() {
     return (
-        <div className="main bg-dark">
+        <div>
             <section className="update-name">
                 <FontAwesomeIcon icon={faRightLeft} />  
-                <h1>User Name change</h1>
-                <form>
-                    <div className="input-wrapper">
-                        <label htmlFor="userName">Username</label>
+                <h1 className='title-update-name'>Edit user info</h1>
+                <form className='update-name-form'>
+                    <div className="update-name-input-wrapper">
+                        <label htmlFor="userName">User name:</label>
                         <input type="text" id="userName" />
                     </div>
-                    <div className="input-wrapper">
-                        <label htmlFor="firstName">First Name</label>
+                    <div className="update-name-input-wrapper">
+                        <label htmlFor="firstName">First name:</label>
                         <input type="text" id="firstName" />
                     </div>
-                    <div className="input-wrapper">
-                        <label htmlFor="lastName">Last Name</label>
+                    <div className="update-name-input-wrapper">
+                        <label htmlFor="lastName">Last name:</label>
                         <input type="text" id="lastName" />
                     </div>
-                    <button type="submit" className="sign-in-button">Save changes</button>
+                    <div className='buttons-edit'>
+                        <button type="submit" className="edit-button">Save</button>
+                        <button type="button" className="edit-button">Cancel</button>
+                    </div>
                 </form>
             </section>
         </div>
