@@ -21,12 +21,12 @@ function Login() {
                 headers: {
                   "Content-Type": "application/json",
                 }, 
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ email, password }), //transformation en chaine JSON + inclusion requete
             });
             const result = await response.json();
-            const token = result.body.token;
-            dispatch(login(token));
-            navigate('/user')
+            const token = result.body.token; //extraction du token
+            dispatch(login(token)); //action redux login renvoyer au store
+            navigate('/user') //si connexion réussi navigation vers la page
         } catch (error) {
             console.error("Une erreur s'est produite lors de la demande de connexion :", error);
         } 

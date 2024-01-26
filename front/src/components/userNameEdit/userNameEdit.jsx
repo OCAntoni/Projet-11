@@ -10,7 +10,7 @@ function UserNameEdit() {
                 <h1>User Name change</h1>
                 <form>
                     <div className="input-wrapper">
-                        <label htmlFor="username">Username</label>
+                        <label htmlFor="userName">Username</label>
                         <input type="text" id="userName" />
                     </div>
                     <div className="input-wrapper">
