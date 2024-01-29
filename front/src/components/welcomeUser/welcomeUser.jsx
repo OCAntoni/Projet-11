@@ -1,11 +1,10 @@
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useReducer } from "../../store/userSlice";
 import "../welcomeUser/welcomeUser.scss"
 
 function WelcomeUser() {
-    const user = useSelector ((state) => state.user)
+    const user = useSelector (state => state.user)
     console.log(user);
     return (
         <div className="header">
