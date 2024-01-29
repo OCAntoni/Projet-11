@@ -1,12 +1,43 @@
+import { NavLink } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRightLeft } from '@fortawesome/free-solid-svg-icons'
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { faGear } from '@fortawesome/free-solid-svg-icons'
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
+import Logo from "../../assets/logo_argent_bank.png"
 import "../userNameEdit/userNameEdit.scss"
 
 function UserNameEdit() {
     return (
-        <div>
+        <>
+            <nav className="main-nav">
+                <NavLink to="/" className="link-home">
+                    <img className="logo-image" src={Logo} alt="Logo Argent Bank" />
+                    <h1 className="logo-text">
+                        <span className="logo-text-bank">
+                            Argent
+                        </span>
+                        <span>
+                            Bank
+                        </span>
+                    </h1>
+                </NavLink>
+                <div className="other-link">
+                    <NavLink to="/user" className="green">
+                        <span className="username">
+                            test
+                        </span>
+                        <FontAwesomeIcon className="size" icon={faUserCircle} />
+                    </NavLink>
+                    <NavLink to="/userNameChange" className="green">
+                        <FontAwesomeIcon className="size" icon={faGear} />
+                    </NavLink>
+                    <NavLink to="/" className="green">
+                        <FontAwesomeIcon className="size" icon={faPowerOff} />
+                    </NavLink>
+                </div>
+            </nav>
+            <main className="main">
             <section className="update-name">
-                <FontAwesomeIcon icon={faRightLeft} />  
                 <h1 className='title-update-name'>Edit user info</h1>
                 <form className='update-name-form'>
                     <div className="update-name-input-wrapper">
@@ -27,7 +58,8 @@ function UserNameEdit() {
                     </div>
                 </form>
             </section>
-        </div>
+            </main>
+        </>
     )
 }
 

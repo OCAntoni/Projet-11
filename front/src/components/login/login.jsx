@@ -29,7 +29,7 @@ function Login() {
             navigate('/user') //si connexion réussi navigation vers la page
         } catch (error) {
             console.error("Une erreur s'est produite lors de la demande de connexion :", error);
-        } 
+        }
     };
 
     return (

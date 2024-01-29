@@ -2,7 +2,7 @@ import "../accountUser/accountUser.scss"
 
 function AccountUser() {
     return (
-        <div>
+        <>
             <section className="account">
                 <div className="account-content-wrapper">
                     <h3 className="account-title">
@@ -57,7 +57,7 @@ function AccountUser() {
                     </button>
                 </div>
             </section>
-        </div>
+        </>
     )
 }
 

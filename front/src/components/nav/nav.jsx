@@ -19,8 +19,7 @@ function Nav() {
     }
 
     const handleLogout = () => { 
-        dispatch(logout());
-        dispatch(clearUser());
+        dispatch(logout(token));
         navigate('/');
     };
 
@@ -39,7 +38,7 @@ function Nav() {
                 {token ? ( //si token connexion présent afficher
                     <div className="link-logout">
                         <button onClick={handleSwitchPage} className="logout">
-                        {user.userName}
+                        {user.firstName}
                         </button>
                         <button onClick={handleLogout} className="logout">
                             <FontAwesomeIcon icon={faRightFromBracket} />

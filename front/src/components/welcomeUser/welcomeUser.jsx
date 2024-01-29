@@ -5,7 +5,7 @@ import { useReducer } from "../../store/userSlice";
 import "../welcomeUser/welcomeUser.scss"
 
 function WelcomeUser() {
-    const user = useSelector (state => state.user)
+    const user = useSelector ((state) => state.user)
     console.log(user);
     return (
         <div className="header">
