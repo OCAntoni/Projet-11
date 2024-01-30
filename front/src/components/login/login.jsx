@@ -2,10 +2,12 @@ import { NavLink, useNavigate } from "react-router-dom"
 import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { login  } from "../../store/authSlice";
+import { fetchProfile } from "../fetchs/fetch-profile";
+import { setUser } from "../../store/userSlice";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import "../login/login.scss"
-import { fetchProfile } from "../fetchs/fetch-profile";
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -25,10 +27,14 @@ function Login() {
             });
             const result = await response.json();
             const token = result.body.token; //extraction du token
-            const responseProfile = await fetchProfile(token);
-            const { firstName, lastName, userName } = responseProfile.body;
-            dispatch(login(token, email, firstName, lastName, userName)); //action redux login renvoyer au store
+
+            dispatch(login(token)); //action redux login renvoyer au store
+
+            const responseProfile = await fetchProfile(response.body.token);
+            
+            dispatch(setUser(token));
             navigate('/user'); //si connexion réussi navigation vers la page
+            
         } catch (error) {
             console.error("Une erreur s'est produite lors de la demande de connexion :", error);
         }

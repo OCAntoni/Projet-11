@@ -1,4 +1,9 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchEditUserName } from "../fetchs/fetch-profile";
+import { updateUser } from "../../store/userSlice";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { faGear } from '@fortawesome/free-solid-svg-icons'
@@ -7,6 +12,28 @@ import Logo from "../../assets/logo_argent_bank.png"
 import "../userNameEdit/userNameEdit.scss"
 
 function UserNameEdit() {
+    const user = useSelector((state) => state.user);
+    const dispatch = useDispatch();
+    const navigate = useNavigate;
+
+    const [newUserName, setNewUserName] = useState(user.userName);
+
+    const handleSaveClick = async (e) => {
+        e.preventDefault();
+        const response = fetchEditUserName(user.token, newUserName)
+        if(response != "null") {
+            dispatch(updateUser(newUserName));
+            alert("User Name change performed succesfuly !")
+        } else {
+            alert("Error, change didn't work, please try again !")
+        };
+    };
+
+    const handleCancelClick = (e) => {
+        e.preventDefault();
+        setNewUserName(user.userName);
+    };
+    
     return (
         <>
             <nav className="main-nav">
@@ -42,19 +69,34 @@ function UserNameEdit() {
                 <form className='update-name-form'>
                     <div className="update-name-input-wrapper">
                         <label htmlFor="userName">User name:</label>
-                        <input type="text" id="userName" />
+                        <input 
+                            type="text" 
+                            id="userName"
+                            placeholder={user.userName} 
+                            onChange={e => setNewUserName(e.target.value)}
+                        />
                     </div>
                     <div className="update-name-input-wrapper">
                         <label htmlFor="firstName">First name:</label>
-                        <input type="text" id="firstName" />
+                        <input 
+                            type="text" 
+                            id="firstName" 
+                            disabled={true} 
+                            defaultValue={user.firstName}
+                        />
                     </div>
                     <div className="update-name-input-wrapper">
                         <label htmlFor="lastName">Last name:</label>
-                        <input type="text" id="lastName" />
+                        <input 
+                            type="text" 
+                            id="lastName" 
+                            disabled={true} 
+                            defaultValue={user.lastName}
+                        />
                     </div>
                     <div className='buttons-edit'>
-                        <button type="submit" className="edit-button">Save</button>
-                        <button type="button" className="edit-button">Cancel</button>
+                        <button onClick={handleSaveClick} type="submit" className="edit-button">Save</button>
+                        <button onClick={handleCancelClick} type="button" className="edit-button">Cancel</button>
                     </div>
                 </form>
             </section>

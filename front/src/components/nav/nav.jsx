@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from "../../store/authSlice";
 import { clearUser } from "../../store/userSlice";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
@@ -19,7 +20,7 @@ function Nav() {
     }
 
     const handleLogout = () => { 
-        dispatch(logout(token));
+        dispatch(logout(clearUser));
         navigate('/');
     };
 
