@@ -30,9 +30,9 @@ function Login() {
 
             dispatch(login(token)); //action redux login renvoyer au store
 
-            const responseProfile = await fetchProfile(response.body.token);
+            const responseProfile = await fetchProfile(result.body.token);
             
-            dispatch(setUser(token));
+            dispatch(setUser(responseProfile.body));
             navigate('/user'); //si connexion réussi navigation vers la page
             
         } catch (error) {

@@ -14,8 +14,8 @@ function User() {
                 <h2 className="sr-only">Accounts</h2>
                 <AccountUser />
             </main>
-        <Footer />
-    </div>
+            <Footer />
+        </div>
     )
 }
 

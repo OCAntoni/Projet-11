@@ -10,17 +10,18 @@ import Logo from "../../assets/argentBankLogo.png"
 import "../nav/nav.scss"
 
 function Nav() {
-    const token = useSelector(state => state.auth.token)
-    const dispatch = useDispatch
-    const navigate = useNavigate()
-    const user = useSelector(state => state.user)
+    const token = useSelector(state => state.auth.token);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const user = useSelector((state) => state.user);
 
     const handleSwitchPage = () => {
         navigate('/user');
     }
 
     const handleLogout = () => { 
-        dispatch(logout(clearUser));
+        dispatch(logout());
+        dispatch(clearUser());
         navigate('/');
     };
 
@@ -39,7 +40,7 @@ function Nav() {
                 {token ? ( //si token connexion présent afficher
                     <div className="link-logout">
                         <button onClick={handleSwitchPage} className="logout">
-                        {user.firstName}
+                            <p>{user.userName}</p>
                         </button>
                         <button onClick={handleLogout} className="logout">
                             <FontAwesomeIcon icon={faRightFromBracket} />

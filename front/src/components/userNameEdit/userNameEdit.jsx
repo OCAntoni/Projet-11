@@ -13,14 +13,15 @@ import "../userNameEdit/userNameEdit.scss"
 
 function UserNameEdit() {
     const user = useSelector((state) => state.user);
+    const token = useSelector ((state) => state.auth.token);
     const dispatch = useDispatch();
-    const navigate = useNavigate;
+    const navigate = useNavigate();
 
     const [newUserName, setNewUserName] = useState(user.userName);
 
     const handleSaveClick = async (e) => {
         e.preventDefault();
-        const response = fetchEditUserName(user.token, newUserName)
+        const response = fetchEditUserName(token, newUserName)
         if(response != "null") {
             dispatch(updateUser(newUserName));
             alert("User Name change performed succesfuly !")
@@ -29,9 +30,9 @@ function UserNameEdit() {
         };
     };
 
-    const handleCancelClick = (e) => {
+    const handleCancelClick = async (e) => {
         e.preventDefault();
-        setNewUserName(user.userName);
+        navigate('/user');
     };
     
     return (
@@ -51,7 +52,7 @@ function UserNameEdit() {
                 <div className="other-link">
                     <NavLink to="/user" className="green">
                         <span className="username">
-                            test
+                            {user.userName}
                         </span>
                         <FontAwesomeIcon className="size" icon={faUserCircle} />
                     </NavLink>
