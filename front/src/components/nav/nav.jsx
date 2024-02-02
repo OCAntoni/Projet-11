@@ -6,7 +6,7 @@ import { clearUser } from "../../store/userSlice";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
-import Logo from "../../assets/argentBankLogo.png"
+import Logo from "../../assets/argentBankLogo.webp"
 import "../nav/nav.scss"
 
 function Nav() {

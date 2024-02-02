@@ -3,12 +3,14 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchEditUserName } from "../fetchs/fetch-profile";
 import { updateUser } from "../../store/userSlice";
+import { logout } from "../../store/authSlice";
+import { clearUser } from "../../store/userSlice";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { faGear } from '@fortawesome/free-solid-svg-icons'
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
-import Logo from "../../assets/logo_argent_bank.png"
+import Logo from "../../assets/logo_argent_bank.webp"
 import "../userNameEdit/userNameEdit.scss"
 
 function UserNameEdit() {
@@ -33,6 +35,12 @@ function UserNameEdit() {
     const handleCancelClick = async (e) => {
         e.preventDefault();
         navigate('/user');
+    };
+
+    const handleLogout = () => { 
+        dispatch(logout());
+        dispatch(clearUser());
+        navigate('/');
     };
     
     return (
@@ -60,7 +68,7 @@ function UserNameEdit() {
                         <FontAwesomeIcon className="size" icon={faGear} />
                     </NavLink>
                     <NavLink to="/" className="green">
-                        <FontAwesomeIcon className="size" icon={faPowerOff} />
+                        <FontAwesomeIcon onClick={handleLogout} className="size" icon={faPowerOff} />
                     </NavLink>
                 </div>
             </nav>
