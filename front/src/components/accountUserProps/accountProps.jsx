@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
-import "../accountUserProps/accountUserProps.scss"
+import "../../styles/main.scss"
 
 function AccountProps(props) {
     return (
-        <section className={"acount" +(props.color ?"dark-mode": "")}>
+        <section className={`account ${props.color ? "dark-mode" : ""}`}>
                 <div className="account-content-wrapper">
                     <h3 className="account-title">
                         {props.title}
@@ -18,7 +18,7 @@ function AccountProps(props) {
                 </div>
                 <div className="account-content-wrapper cta">
                     {props.color ? (
-                        <FontAwesomeIcon icon = {faAngleRight} />
+                        <FontAwesomeIcon icon = {faAngleRight} className='arrow' />
                     ) :
                     (
                         <button className="transaction-button">

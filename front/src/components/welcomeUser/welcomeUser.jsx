@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom"
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import "../welcomeUser/welcomeUser.scss"
 

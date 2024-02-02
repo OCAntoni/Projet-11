@@ -22,7 +22,7 @@ function UserNameEdit() {
     const handleSaveClick = async (e) => {
         e.preventDefault();
         const response = fetchEditUserName(token, newUserName)
-        if(response != "null") {
+        if(response !== "null") {
             dispatch(updateUser(newUserName));
             alert("User Name change performed succesfuly !")
         } else {

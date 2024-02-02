@@ -21,7 +21,7 @@ const UserSlice = createSlice ({
             state.userName = '';
             state.id = '';
         },
-        updateUser: (state, action) => { //maj uniquement du username avec valeur fournie pdans l'action
+        updateUser: (state, action) => { //maj uniquement du username avec valeur fournie pdt l'action
             return { ...state, userName: action.payload };
         }
     }

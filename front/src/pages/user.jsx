@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom"
 import Nav from "../components/nav/nav"
 import WelcomeUser from "../components/welcomeUser/welcomeUser"
 import AccountUser from "../components/accountUser/accountUser"
