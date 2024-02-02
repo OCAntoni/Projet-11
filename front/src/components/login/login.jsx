@@ -12,6 +12,7 @@ import "../login/login.scss"
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showError, setShowError] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -25,15 +26,19 @@ function Login() {
                 }, 
                 body: JSON.stringify({ email, password }), //transformation en chaine JSON + inclusion requete
             });
-            const result = await response.json();
-            const token = result.body.token; //extraction du token
+            if (response.status === 400) {
+                setShowError(true);
+            } else {
+                const result = await response.json();
+                const token = result.body.token; //extraction du token
 
-            dispatch(login(token)); //action redux login renvoyer au store
+                dispatch(login(token)); //action redux login renvoyer au store
 
-            const responseProfile = await fetchProfile(result.body.token);
+                const responseProfile = await fetchProfile(result.body.token);
             
-            dispatch(setUser(responseProfile.body));
-            navigate('/user'); //si connexion réussi navigation vers la page
+                dispatch(setUser(responseProfile.body));
+                navigate('/user'); //si connexion réussi navigation vers la page
+            }
             
         } catch (error) {
             console.error("Une erreur s'est produite lors de la demande de connexion :", error);
@@ -59,6 +64,13 @@ function Login() {
                                 <label htmlFor="remember-me">Remember me</label>
                             </div>
                             <button type="submit" className="sign-in-button">Sign In</button>
+                            {showError && (
+                                <div className="error-login">
+                                    <p>
+                                        Something wrong, check our username or your password and retry !
+                                    </p>
+                                </div>
+                            )}
                         </form>
                     </section>
         </main>
