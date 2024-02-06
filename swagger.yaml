@@ -101,138 +101,6 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-
-  #new endpoints
-  #récupérer toutes les transactions d'un utilisateur pour un mois
-  /transactions:
-    get:
-      security:
-        - Bearer: []
-      tags:
-        - Transactions Module
-      summary: User get account transactions
-      description: API for fetching a month's user transactions
-      parameters:
-        - in: header
-          name: Authorization
-          description: Bearer token for authentication
-          required: true
-          type: string
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: User transaction retrieved successully
-          schema:
-            $ref: '#/definitions/Transactions'
-        '400':
-          description: Invalid Fields
-        '500':
-          description: Internal Server Error
-
-  #récupérer les infos d'une transaction
-  /transactions/{transactionsId}:
-    get:
-      security:
-        - Bearer: []
-      tags:
-        - Transactions Module
-      summary: User get account transaction by id
-      description: API for fetching a transaction's user by id
-      parameters:
-         - in: header
-          name: Authorization
-          description: Bearer token for authentication
-          required: true
-          type: string
-        - in: path
-          name: id
-          description: Transaction id
-          required: true
-          type: string
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: User transaction retrieved successully
-          schema:
-            $ref: '#/definitions/Transactions/Id'
-        '400':
-          description: Invalid Fields
-        '500':
-          description: Internal Server Error
-
-  #recupérer les catégories associées à une transaction
-  /transactions/{transactionsId}/categories:
-    get:
-      security:
-        - Bearer: []
-      tags:
-        - Transactions Module
-      summary: User get categories
-      description: API for fetching transaction's categories
-      parameters:
-         - in: header
-          name: Authorization
-          description: Bearer token for authentication
-          required: true
-          type: string
-        - in: path
-          name: id
-          description: Transaction id
-          required: true
-          type: string
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: User transaction categories retrieved successully
-          schema:
-            $ref: '#/definitions/TransactionsCategories'
-        '400':
-          description: Invalid Fields
-        '500':
-          description: Internal Server Error
-
-  #maj categorie associée à une transaction
-  /transactions/{transactionsId}/categories/update:
-    put:
-      security:
-        - Bearer: []
-      tags:
-        - Transactions Module
-      summary: User update categories
-      description: API for update categories for a user transaction by id
-      parameters:
-         - in: header
-          name: Authorization
-          description: Bearer token for authentication
-          required: true
-          type: string
-        - in: path
-          name: id
-          description: Transaction id
-          required: true
-          type: string
-        - in: body
-          name: body
-          description: Update transaction information
-          required: true
-          schema:
-            $ref: '#/definitions/TransactionUpdate'
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: User transaction category update retrieved successully
-          schema:
-            $ref: '#/definitions/TransactionsUpdateResponse'
-        '400':
-          description: Invalid Fields
-        '500':
-          description: Internal Server Error
-
-
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -288,3 +156,133 @@ definitions:
     properties:
       userName:
         type: string
+
+  #new endpoints
+  #récupérer toutes les transactions d'un utilisateur pour un mois
+  /transactions:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions Module
+      summary: User get account transactions
+      description: API for fetching a month's user transactions
+      parameters:
+        - in: header
+          name: Authorization
+          description: Bearer token for authentication
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User transaction retrieved successully
+          schema:
+            $ref: '#/definitions/Transactions'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+
+  #récupérer les infos d'une transaction
+  /transactions/{transactionsId}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions Module
+      summary: User get account transaction by id
+      description: API for fetching a transaction's user by id
+      parameters:
+        - in: header
+          name: Authorization
+          description: Bearer token for authentication
+          required: true
+          type: string
+        - in: path
+          name: id
+          description: Transaction id
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User transaction retrieved successully
+          schema:
+            $ref: '#/definitions/Transactions/Id'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+
+  #recupérer les catégories associées à une transaction
+  /transactions/{transactionsId}/categories:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions Module
+      summary: User get categories
+      description: API for fetching transaction's categories
+      parameters:
+        - in: header
+          name: Authorization
+          description: Bearer token for authentication
+          required: true
+          type: string
+        - in: path
+          name: transactionId
+          description: Transaction id
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User transaction categories retrieved succesfully
+          schema:
+            $ref: '#/definitions/TransactionsCategories'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+
+  #maj categorie associée à une transaction
+  /transactions/{transactionsId}/categories/update:
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions Module
+      summary: User update categories
+      description: API for update categories for a user transaction by id
+      parameters:
+        - in: header
+          name: Authorization
+          description: Bearer token for authentication
+          required: true
+          type: string
+        - in: path
+          name: id
+          description: Transaction id
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Update transaction information
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionUpdate'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User transaction category update retrieved successully
+          schema:
+            $ref: '#/definitions/TransactionsUpdateResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
