@@ -1,4 +1,20 @@
-# Argent Bank
+<h1>Argent Bank projet 11</h1>
+
+11ème projet du parcours "Intégrateur web" avec Openclassrooms. Implémentez le front-end d'une application bancaire avec <b>React</b> et également gérer son état avec <b>Redux</b>. Pour finir gestion de l'authentification des utilisateurs, ainsi que la personnalisation de leurs user name, et adopter un "green-code".
+
+<h2>Apercu du projet</h2>
+
+<img src="./front/src/assets/argent_bank_github.png">
+
+<h2>Technos. front-end utilisées</h2>
+
+React / Redux / JAVASCRIPT / SCSS
+
+<h2>Technos. back-end utilisées</h2>
+
+Node / MongoDB-atlas 
+
+# Install
 
 This codebase contains the code needed to run the backend for Argent Bank.
 
