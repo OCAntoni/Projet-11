@@ -162,7 +162,7 @@ paths:
           description: Internal Server Error
 
   #recupérer les catégories associées à une transaction
-  /transactions/{transactionsId}/categories:
+  /categories:
     get:
       security:
         - Bearer: []
@@ -174,11 +174,6 @@ paths:
         - in: header
           name: Authorization
           description: Bearer token for authentication
-          required: true
-          type: string
-        - in: path
-          name: transactionId
-          description: Transaction id
           required: true
           type: string
       produces:
@@ -224,6 +219,43 @@ paths:
       responses:
         '200':
           description: User transaction category update retrieved successully
+          schema:
+            $ref: '#/definitions/TransactionsUpdateResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+          #maj categorie associée à une transaction
+  /transactions/{transactionsId}/note/update:
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions Module
+      summary: User update note
+      description: API for update note for a user transaction by id
+      parameters:
+        - in: header
+          name: Authorization
+          description: Bearer token for authentication
+          required: true
+          type: string
+        - in: path
+          name: id
+          description: Transaction id
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Update transaction information
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionNote'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User transaction note update retrieved successully
           schema:
             $ref: '#/definitions/TransactionsUpdateResponse'
         '400':

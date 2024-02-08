@@ -53,6 +53,7 @@
   .link-logout {
     display: flex;
     flex-direction: row;
+    gap: 5px;
 
     .logout {
       text-decoration: none;
@@ -65,6 +66,8 @@
       display: flex;
       align-items: center;
       gap: 5px;
+      font-size: 16px;
+      font-family: 'Helvetica';
     }
 
     .logout:hover {

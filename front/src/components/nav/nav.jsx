@@ -40,7 +40,7 @@ function Nav() {
                 {token ? ( //si token connexion présent afficher
                     <div className="link-logout">
                         <button onClick={handleSwitchPage} className="logout">
-                            <p>{user.userName}</p>
+                            {user.userName}
                         </button>
                         <button onClick={handleLogout} className="logout">
                             <FontAwesomeIcon icon={faRightFromBracket} />
