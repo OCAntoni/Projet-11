@@ -189,7 +189,7 @@ paths:
           description: Internal Server Error
 
   #maj categorie associée à une transaction
-  /transactions/{transactionsId}/categories/update:
+  /transactions/{transactionsId}/categories:
     put:
       security:
         - Bearer: []
@@ -213,7 +213,7 @@ paths:
           description: Update transaction information
           required: true
           schema:
-            $ref: '#/definitions/TransactionUpdate'
+            $ref: '#/definitions/TransactionCategories'
       produces:
         - application/json
       responses:
@@ -225,8 +225,9 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-          #maj categorie associée à une transaction
-  /transactions/{transactionsId}/note/update:
+
+  #maj note associée à une transaction
+  /transactions/{transactionsId}/note:
     put:
       security:
         - Bearer: []
@@ -250,7 +251,7 @@ paths:
           description: Update transaction information
           required: true
           schema:
-            $ref: '#/definitions/TransactionNote'
+            $ref: '#/definitions/TransactionsNote'
       produces:
         - application/json
       responses:
@@ -262,6 +263,7 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+
 securityDefinitions:
   Bearer:
     type: apiKey

@@ -16,7 +16,7 @@ function Login() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleLogin = async (e) => {
+    const handleLogin = async (e) => { //soumission de mail et mdp pour login
         e.preventDefault();
         try { 
             const response = await fetch ("http://localhost:3001/api/v1/user/login", {
@@ -36,7 +36,7 @@ function Login() {
 
                 const responseProfile = await fetchProfile(result.body.token);
             
-                dispatch(setUser(responseProfile.body));
+                dispatch(setUser(responseProfile.body)); //action redux pour maj de l'utilisateur
                 navigate('/user'); //si connexion réussi navigation vers la page
             }
             

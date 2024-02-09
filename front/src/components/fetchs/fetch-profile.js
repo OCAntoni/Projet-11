@@ -1,4 +1,4 @@
-export async function fetchProfile(token) {
+export async function fetchProfile(token) { //récupéreration du profil d'utilisateur avec token d'authentification
     try {
         const response = await fetch("http://localhost:3001/api/v1/user/profile", {
             method: "POST",
@@ -18,7 +18,7 @@ export async function fetchProfile(token) {
     }
 }
 
-export async function fetchEditUserName(token, userName) {
+export async function fetchEditUserName(token, userName) { //maj du username sur le serveur
     try {
         const response = await fetch("http://localhost:3001/api/v1/user/profile", {
             method: "PUT",

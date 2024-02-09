@@ -10,10 +10,10 @@ import Logo from "../../assets/argentBankLogo.webp"
 import "../nav/nav.scss"
 
 function Nav() {
-    const token = useSelector(state => state.auth.token);
+    const token = useSelector(state => state.auth.token); //extraction et stockage du token de l'état auth
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const user = useSelector((state) => state.user);
+    const user = useSelector((state) => state.user); //extraction et stockage du user de l'état global
 
     const handleSwitchPage = () => {
         navigate('/user');
