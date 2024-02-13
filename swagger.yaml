@@ -264,6 +264,82 @@ paths:
         '500':
           description: Internal Server Error
 
+  #suppresion note associée à une transaction
+  /transactions/{transactionsId}/note:
+    delete:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions Module
+      summary: User delete note
+      description: API for delete note for a user transaction by id
+      parameters:
+        - in: header
+          name: Authorization
+          description: Bearer token for authentication
+          required: true
+          type: string
+        - in: path
+          name: id
+          description: Transaction id
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: delete transaction note
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionsNote'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User transaction note delete retrieved successully
+          schema:
+            $ref: '#/definitions/TransactionsUpdateResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+
+  #ajout note associée à une transaction
+  /transactions/{transactionsId}/note:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions Module
+      summary: User add note
+      description: API for add a new note for a user transaction by id
+      parameters:
+        - in: header
+          name: Authorization
+          description: Bearer token for authentication
+          required: true
+          type: string
+        - in: path
+          name: id
+          description: Transaction id
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: add transaction note
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionsNote'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User transaction note delete retrieved successully
+          schema:
+            $ref: '#/definitions/TransactionsUpdateResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+
 securityDefinitions:
   Bearer:
     type: apiKey
